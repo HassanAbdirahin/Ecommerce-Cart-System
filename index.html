@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart App</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        .title {
+            margin-left: 20px;
+        }
+
+        .modal {
+            display: none;
+            width: 100px;
+            margin: auto;
+            padding: 5px 100px;
+            align-items: center;
+            justify-content: center;
+            background-color: #ededed;
+            background-color: rgba(0, 255, 0, 0.2);
+            color: #00a300;
+            border-radius: 10px;
+            transition: 2s;
+        }
+        .modal.purchased {
+            display: flex;
+        }
+
+        #cart-container {
+            position: absolute;
+            top: 0;
+            right: -300px; /* Initial position outside the viewport */
+            width: 300px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: right 0.3s ease-in-out;
+            backdrop-filter: blur(5px);
+        }
+        #cart-container.active {
+            right: 0;
+        }
+
+        #cart-content {
+            padding: 20px;
+        }
+
+        #cart-content .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #cart-content .cart-item img {
+            width: 60px;
+        }
+
+        #close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #333;
+        }
+
+        #cart-icon {
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            color: #333;
+            z-index: 2;
+        }
+        
+
+        #main-content {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        /* Style for the product items */
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            max-height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <h1 class="title">Ecommerce Store</h1>
+        <!-- Modal -->
+        <div class="modal">
+            
+        </div>
+
+    <div id="cart-container">
+        <div id="close-button" onclick="closeCart()">×</div>
+        <div id="cart-content">
+            <h3>Your Cart is Empty</h3>
+            
+            <!-- <div class="cart-item">
+                <img src="img" alt="">
+                <p>Item 2</p>
+                <p class="cart-price">$19.99</p>
+                <button class="remove">x</button>
+            </div> -->
+            <h4 id="total">Total: 0</h4>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div id="cart-icon" onclick="openCart()">🛒</div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D" alt="Item 1">
+            <p>Item 1</p>
+            <p id="price">$10.99</p>
+            <button class="add-cart">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg" alt="Item 2">
+            <p>Item 2</p>
+            <p id="price">$19.99</p>
+            <button class="add-cart">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.stefantell.se/blog/wp-content/uploads/2013/06/product-photography-on-white-background-no-flags.jpg" alt="Item 3">
+            <p>Item 3</p>
+            <p id="price">$14.50</p>
+            <button class="add-cart">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.befunky.com/images/wp/wp-2017-09-Background-Remover-1.jpg?auto=avif,webp&format=jpg&width=944" alt="Item 3">
+            <p>Item 4</p>
+            <p id="price">$22.50</p>
+            <button class="add-cart">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://images.wondershare.com/pixcut/assets/blog/product-images-for-ecommerce-sitse-3.jpg" alt="Item 3">
+            <p>Item 5</p>
+            <p id="price">$8.50</p>
+        <button class="add-cart">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/03/Natural-Light-Product-Photography-Sunglasses.jpg" alt="Item 3">
+            <p>Item 6</p>
+            <p id="price">$1.50</p>
+        <button class="add-cart">Add to Cart</button>
+        </div>
+        
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
